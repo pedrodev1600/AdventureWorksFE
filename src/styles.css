@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+.product-image{
+    min-height: 5rem;
+    width: 4.4916666667rem;
+    height: auto;
+    border-radius: 0;
+}

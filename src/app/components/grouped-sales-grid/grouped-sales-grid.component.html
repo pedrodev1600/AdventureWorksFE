@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+      <h4>Top 10 Sales Territories </h4>
+      <h6>Please click a row to view product sales for territory</h6>
+    </div>
+    <div class="card-body">
+        <dx-data-grid 
+        [dataSource]="groupedSales"
+        [remoteOperations]="false"
+        [allowColumnReordering]="true"
+        [rowAlternationEnabled]="true"
+        [showBorders]="true"
+        [width]="'100%'"
+        (onRowClick)="onRowClick($event)"
+        >
+          <dxi-column dataField="name" caption="Country" [allowEditing]="false" [format]="{ type: 'currency', currency: 'GBP' }"></dxi-column>
+          <dxi-column dataField="subTotal" caption="Sub Total" dataType="number" [allowEditing]="false" [format]="{ type: 'currency', currency: 'GBP' }"></dxi-column>
+          <dxi-column dataField="taxAmount" caption="Tax Amount" dataType="number" [allowEditing]="false" [format]="{ type: 'currency', currency: 'GBP' }"></dxi-column>
+          <dxi-column dataField="freight" caption="Freight" dataType="number" [allowEditing]="false" [format]="{ type: 'currency', currency: 'GBP' }"></dxi-column>
+          <dxi-column dataField="totalDue" caption="Total Due" dataType="number" [format]="{ type: 'currency', currency: 'GBP' }" ></dxi-column>
+      </dx-data-grid>
+    </div>
+  </div>

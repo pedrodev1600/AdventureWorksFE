@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h1 class="text-center text-primary">Adventure Works Dashboard</h1>
+    <p class="text-muted text-center">Overview of your web store</p>
+  
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      
+      <app-sales-card [title]="'Total Sales'"></app-sales-card>
+  
+      <app-sales-card [title]="'Online Sales'" [onlineSales]="true"></app-sales-card>
+  
+      <app-sales-card [title]="'In Store Sales'" [onlineSales]="false"></app-sales-card>
+
+    </div>
+    <div class="col-lg-3 mb-3 mb-lg-5">
+      <div class="d-grid gap-2 gap-lg-4">
+        <!-- Card -->
+        <a class="card card-hover-shadow" href="/product-list">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="flex-shrink-0">
+                <img class="product-image" [src]="'/assets/images/oc-collection.svg'" alt="Image Description" style="min-height: 5rem;">
+              </div>
+
+              <div class="flex-grow-1 ms-4">
+                <h5 class="text-inherit mb-1">Manage Products</h5>
+              </div>
+
+              <div class="ms-2 text-end">
+                <i class="bi-chevron-right text-body text-inherit"></i>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- End Card -->
+      </div>
+    </div>
+  
+    <app-grouped-sales-grid [limit]="10" url="/group/territory" rowClickUrl="territory-sales/"></app-grouped-sales-grid>
+  </div>

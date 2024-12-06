@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Product sales for {{territoryName}}</h4>
+  </div>
+  <div class="card-body d-flex justify-content-center align-items-center">
+    <dx-data-grid 
+      [dataSource]="groupedProducts"
+      [remoteOperations]="false"
+      [allowColumnReordering]="true"
+      [rowAlternationEnabled]="true"
+      [showBorders]="true"
+      [width]="'90%'"
+      [searchPanel]="{ visible: true, highlightSearchText: true, width: 240 }"
+      [filterRow]="{ visible: true, applyFilter: 'auto' }"
+    >
+      <dxi-column dataField="productName" caption="Product" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="productNumber" caption="Product Number" [allowEditing]="false"></dxi-column>
+      <dxi-column dataField="totalSalesAmount" caption="Total Sales Amount" dataType="number" [allowEditing]="false" alignment="left" [format]="{ type: 'currency', currency: 'GBP' }"></dxi-column>
+      <dxi-column dataField="totalQuantitySold" caption="Quantity Sold" dataType="number" [allowEditing]="false" alignment="left"></dxi-column>
+    </dx-data-grid>
+  </div>
+</div>

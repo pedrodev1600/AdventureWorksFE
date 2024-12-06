@@ -1,0 +1,209 @@
+<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" novalidate>
+  <div class="content container-fluid">
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-no-gutter">
+              <li class="breadcrumb-item"><a class="breadcrumb-link" href="/product-list">Products</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product details</li>
+            </ol>
+          </nav>
+
+          <div class="mt-5">
+            <h2>{{ product.productId ? product.name : 'Add New Product' }}</h2>
+            <h1 class="page-header-title"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card mb-3 mb-lg-5">
+          <div class="card-header">
+            <h4 class="card-header-title">Product information</h4>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <label for="priceNameLabel" class="form-label">Name <span class="text-danger">*</span></label>
+              <input type="text"
+                     class="form-control"
+                     [(ngModel)]="product.name"
+                     name="name"
+                     required
+                     #name="ngModel"
+                     placeholder="Name" />
+              <div *ngIf="(name.invalid && (name.dirty || name.touched || productForm.submitted))" class="text-danger">
+                <small *ngIf="name.errors?.['required']">Name is required.</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="mb-4">
+                  <label for="productNumberLabel" class="form-label">Product Number <span class="text-danger">*</span></label>
+                  <input type="text"
+                         class="form-control"
+                         [(ngModel)]="product.productNumber"
+                         name="productNumber"
+                         required
+                         #productNumber="ngModel"
+                         placeholder="Product Number">
+                  <div *ngIf="(productNumber.invalid && (productNumber.dirty || productNumber.touched || productForm.submitted))" class="text-danger">
+                    <small *ngIf="productNumber.errors?.['required']">Product Number is required.</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="mb-4">
+                  <label for="sizeLabel" class="form-label">Size</label>
+                  <input type="text"
+                         class="form-control"
+                         [(ngModel)]="product.size"
+                         name="size"
+                         #size="ngModel"
+                         placeholder="Size"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card mb-3 mb-lg-5">
+          <div class="card-header">
+            <h4 class="card-header-title">Pricing</h4>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <label for="listPrice" class="form-label">List Price <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input type="number"
+                       class="form-control"
+                       [(ngModel)]="product.listPrice"
+                       name="listPrice"
+                       required
+                       #listPrice="ngModel"
+                       min="0"
+                       step="0.01"
+                       placeholder="0.00"
+                       aria-label="0.00">
+              </div>
+              <div *ngIf="(listPrice.invalid && (listPrice.dirty || listPrice.touched || productForm.submitted))" class="text-danger">
+                <small *ngIf="listPrice.errors?.['required']">List Price is required.</small>
+                <small *ngIf="listPrice.errors?.['min']">List Price cannot be negative.</small>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="standardCost" class="form-label">Standard Cost <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input type="number"
+                       class="form-control"
+                       [(ngModel)]="product.standardCost"
+                       name="standardCost"
+                       required
+                       #standardCost="ngModel"
+                       min="0"
+                       step="0.01"
+                       placeholder="0.00"
+                       aria-label="0.00">
+              </div>
+              <div *ngIf="(standardCost.invalid && (standardCost.dirty || standardCost.touched || productForm.submitted))" class="text-danger">
+                <small *ngIf="standardCost.errors?.['required']">Standard Cost is required.</small>
+                <small *ngIf="standardCost.errors?.['min']">Standard Cost cannot be negative.</small>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="finishedGoodsFlag" class="form-label">Is Finished Good</label>
+              <div class="input-group">
+                <input type="checkbox"
+                       class="form-check-input"
+                       [(ngModel)]="product.finishedGoodsFlag"
+                       name="finishedGoodsFlag">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-header-title">Attributes</h4>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <label for="safetyStockLevelLabel" class="form-label">Safety Stock Level</label>
+              <input type="number"
+                     class="form-control"
+                     [(ngModel)]="product.safetyStockLevel"
+                     name="safetyStockLevel"
+                     #safetyStockLevel="ngModel"
+                     min="0"
+                     placeholder="500"
+                     aria-label="500">
+            </div>
+
+            <div class="mb-4">
+              <label for="reorderPointLabel" class="form-label">Reorder Point</label>
+              <input type="number"
+                     class="form-control"
+                     [(ngModel)]="product.reorderPoint"
+                     name="reorderPoint"
+                     #reorderPoint="ngModel"
+                     min="0"
+                     placeholder="500"
+                     aria-label="500">
+            </div>
+
+            <div class="mb-4">
+              <label for="daysToManufacture" class="form-label">Days To Manufacture</label>
+              <input type="number"
+                     class="form-control"
+                     [(ngModel)]="product.daysToManufacture"
+                     name="daysToManufacture"
+                     #daysToManufacture="ngModel"
+                     min="0"
+                     placeholder="500"
+                     aria-label="500">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="d-flex justify-content-end mt-4">
+        <div *ngIf="isNew">
+          <button type="submit" class="btn btn-primary me-2">Add</button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        </div>
+        <div *ngIf="!isNew">
+          <button type="submit" class="btn btn-primary me-2">Save</button>
+          <button type="button" class="btn btn-danger me-2" (click)="onDelete()">Delete</button>
+          <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showDeleteConfirmation" class="modal fade show" style="display: block;" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" (click)="onCancelDelete()"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this product?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="onConfirmDelete()">Yes, Delete</button>
+            <button type="button" class="btn btn-secondary" (click)="onCancelDelete()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

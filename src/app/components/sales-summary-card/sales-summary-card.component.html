@@ -1,0 +1,21 @@
+<div *ngIf="loading" class="text-center py-4">
+  <p>Loading...</p>
+</div>
+
+<div *ngIf="!loading" class="card card-body mb-3 mb-lg-5" style="width: 18rem;">
+  <div class="d-flex">
+    <div class="flex-grow-1">
+      <h6 class="card-subtitle mb-3">{{ title }}</h6>
+      <h3 class="card-title">{{ salesSummary?.salesTotalAmount | currency:'GBP' }}</h3>
+
+      <div class="d-flex align-items-center">
+        <span class="d-block fs-6 text-success">
+          {{ salesSummary?.roundedSalesCount }} orders
+        </span>
+      </div>
+    </div>
+    <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+      <i class="bi-shop"></i>
+    </span>
+  </div>
+</div>

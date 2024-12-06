@@ -1,0 +1,27 @@
+<dx-data-grid
+  [dataSource]="products"
+  [showBorders]="true"
+  [rowAlternationEnabled]="true"
+  [groupPanel]="{ visible: true }"
+  [paging]="{ pageSize: 10 }"
+  [pager]="{ showPageSizeSelector: true, allowedPageSizes: [10, 50, 100], showInfo: true }"
+  [allowColumnReordering]="true"
+  [allowColumnResizing]="true"
+  [searchPanel]="{ visible: true, highlightCaseSensitive: true }"
+  [filterRow]="{ visible: true }"
+  (onRowClick)="onRowClick($event)"
+>
+  <dxi-column dataField="name" caption="Product Name" [width]="200"></dxi-column>
+  <dxi-column dataField="productNumber" caption="Product Number" [width]="150"></dxi-column>
+  <dxi-column dataField="color" caption="Color"></dxi-column>
+  <dxi-column dataField="size" caption="Size"></dxi-column>
+  <dxi-column dataField="standardCost" caption="Standard Cost" format="currency"></dxi-column>
+  <dxi-column dataField="listPrice" caption="List Price" format="currency"></dxi-column>
+  <dxi-column dataField="productCategory" caption="Category"></dxi-column>
+  <dxi-column dataField="productModel" caption="Model"></dxi-column>
+  <dxi-column dataField="weight" caption="Weight (kg)" format="fixedPoint"></dxi-column>
+  <dxi-column dataField="safetyStockLevel" caption="Safety Stock Level"></dxi-column>
+  <dxi-column dataField="reorderPoint" caption="Reorder Point"></dxi-column>
+  <dxi-column dataField="sellStartDate" caption="Sell Start Date" dataType="date" [width]="150"></dxi-column>
+  <dxi-column dataField="sellEndDate" caption="Sell End Date" dataType="date" [width]="150"></dxi-column>
+</dx-data-grid>

@@ -1,0 +1,18 @@
+
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary">Adventure Works Product Sales</h1>
+    <p class="text-muted text-center">A breakdown of product sales for a territory</p>
+  
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      
+      <app-sales-card [title]="'Total Sales'" [territoryId]="territoryId"></app-sales-card>
+  
+      <app-sales-card [title]="'Online Sales'" [onlineSales]="true" [territoryId]="territoryId"></app-sales-card>
+  
+      <app-sales-card [title]="'In Store Sales'" [onlineSales]="false" [territoryId]="territoryId"></app-sales-card>
+
+    </div>
+  
+    <app-territory-product-sales-grid [territoryId]="territoryId" [territoryName]="territoryName"></app-territory-product-sales-grid>
+  </div>
